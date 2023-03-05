@@ -3,7 +3,9 @@ import { Menu } from '@headlessui/react'
 export default function MenuItem(props) {
     return (
         <Menu>
-            <Menu.Button>more</Menu.Button>
+            <Menu.Button>
+                {this.props.children}
+            </Menu.Button>
             <Menu.Items>
                 <Menu.Item>
                     {({ active }) => (
