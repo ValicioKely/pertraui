@@ -1,7 +1,7 @@
 import React from "react";
 import PageLayout from "./pageLayout/PageLayout";
 import TopBar from "./topBar/TopBar";
-import SideNav from "./nav/SideNav";
+import SideNav from "./sidenav/SideNav";
 import Footer from "./footer/Footer";
 import Section from "./section/Section";
 

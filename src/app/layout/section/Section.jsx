@@ -2,7 +2,7 @@
 function   Section(props) {
         return (
             <div>
-                Section
+                {props.children}
             </div>
         );
 }
