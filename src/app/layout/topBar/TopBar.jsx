@@ -1,57 +1,55 @@
-import Message from "../../shared/icons/Message";
-import Bell from "../../shared/icons/Bell";
-import Humburger from "../../shared/icons/Humburger";
-import SearchModal from "../../shared/components/SearchModal";
+import {SearchField} from "../../shared/components/SearchField";
+import {
+    Bars3Icon,
+    BellIcon,
+    BuildingStorefrontIcon,
+    ChatBubbleLeftRightIcon, CpuChipIcon,
+    FlagIcon,
+    HomeIcon, Squares2X2Icon,
+    UserGroupIcon
+} from "@heroicons/react/20/solid";
 
-function NavLink(props) {
-    return(
-            <li className="text-gray-500  ">
-                {props.children}
-            </li>
-    )
-}
-function NavItem(props) {
+function NavRow(props) {
     return (
-        <ul className= "flex flex-row space-x-5 p-3 ">
+        <div className=" p-2 w-28 flex justify-center group border-b-transparent border-b-4 hover:border-b-blue-600 transition-all ease-in-out duration-300 ">
             {props.children}
-        </ul>
-    )
-}
-
-export function NavIconContainer (props){
-    return (<div className=" bg-gray-100 hover:bg-gray-200 h-12 w-12 m-auto p-3 rounded-full  ease-in-out duration-200">
-        {props.children}
-    </div>)
-}
-
-
-function NavBrand() {
-    return(
-        <div className="flex p-3 justify-between gap-5 absolute top-0 left-0 text-stone-500 hover:text-stone-900 ease-in-out duration-200">
-            <div className="p-1">
-               <h1 className="text-2xl text-blue-400" >F</h1>
-            </div>
-            <div>
-                <SearchModal />
-            </div>
         </div>
     )
 }
+
 export default function Navbar() {
     return (
-        <div className= "bg-white border-b-2 border-b-gray-400 pr-3 pl-3  flex justify-end relative">
-            <NavBrand />
-            <NavItem >
-                <NavLink>
-                        <Message  />
-                </NavLink>
-                <NavLink>
-                        <Bell />
-                </NavLink>
-                <NavLink >
-                        <Humburger />
-                </NavLink>
-            </NavItem>
+        <div className= "bg-white border-b-2 shadow pr-3 pl-3 flex justify-between">
+
+
+            <div className="nav-left flex justify-evenly items-center gap-2">
+                <CpuChipIcon className="h-6 w-6 text-green-300" />
+                <SearchField placeholder = "Search Facebook"/>
+            </div>
+
+
+            <div className="nav-center flex justify-evenly gap-10 ">
+                <NavRow >
+                    <HomeIcon className="h-8 w-8 text-gray-300 group-hover:text-blue-600 " />
+                </NavRow>
+                <NavRow>
+                    <FlagIcon className="h-8 w-8 text-gray-300 group-hover:text-blue-600" />
+                </NavRow>
+                <NavRow>
+                    <BuildingStorefrontIcon className="h-8 w-8 text-gray-300 group-hover:text-blue-600" />
+                </NavRow>
+                <NavRow>
+                    <UserGroupIcon className="h-8 w-8 text-gray-300 group-hover:text-blue-600" />
+                </NavRow>
+            </div>
+
+
+            <div className="nav-right flex justify-evenly items-center gap-4">
+                <Squares2X2Icon className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300"/>
+                <ChatBubbleLeftRightIcon className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300" />
+                <BellIcon className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300"/>
+                <Bars3Icon className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300"/>
+            </div>
         </div>
     )
 }

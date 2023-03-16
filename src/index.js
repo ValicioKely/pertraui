@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ApolloClient , InMemoryCache , ApolloProvider} from "@apollo/client";
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import {Home} from "./app/views/Home";
+import {Group} from "./app/views/Group";
 
 
 const client = new ApolloClient({
@@ -11,9 +14,17 @@ const client = new ApolloClient({
     cache : new InMemoryCache()
 })
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<App />}  >
+            <Route path="home" element={<Home/> } />
+            <Route path="group" element={<Group/> } />
+        </Route>
+    )
+);
 root.render(
   <ApolloProvider client={client}>
-    <App />
+      <RouterProvider router={router} />
   </ApolloProvider>
 );
 
