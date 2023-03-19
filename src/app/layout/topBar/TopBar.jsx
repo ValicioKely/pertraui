@@ -12,7 +12,7 @@ function MainNav({link, Icon}) {
     return (
         <NavLink to={link}
                  className={({isActive, isPending}) =>
-                     isActive ? " hidden w-28 lg:flex justify-center items-center group border-b-transparent border-b-4 border-b-blue-600 transition-all ease-in-out duration-300 "
+                     isActive ? " hidden w-28 lg:flex justify-center items-center group border-b-4 border-b-blue-600 transition-all ease-in-out duration-300 "
                          : " hidden w-28 lg:flex justify-center items-center group border-b-transparent border-b-4  transition-all ease-in-out duration-300 "
                  }
         >

@@ -11,7 +11,7 @@ export function ProfileCard() {
 
     return (
         <div>
-           <div className="shadow-xl w-fit rounded-xl p-4" >
+           <div className="shadow-xl w-fit rounded-xl p-4 border-2 border-green-400" >
                <form onSubmit={handleSubmit(onSubmit)}>
                    <div className="bg-gray-200 w-80 h-80 rounded-full relative">
                        <label htmlFor="avatar"  className="absolute bottom-5 right-12"><CameraIcon className="h-10 w-10 text-gray-500" /></label>
