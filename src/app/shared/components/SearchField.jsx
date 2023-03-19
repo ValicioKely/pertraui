@@ -4,12 +4,11 @@ import {useCallback} from "react";
 
 export function SearchField(props) {
 
-    const {register , handleSubmit , watch } = useForm();
+    const {register , handleSubmit  } = useForm();
 
     const onSubmit = useCallback((data ,e )=> {
         e.preventDefault();
     } , []);
-    console.log(watch("search"));
 
     return (
         <form className="flex justify-evenly bg-gray-100  p-2 rounded-full" onSubmit={handleSubmit(onSubmit)}>
