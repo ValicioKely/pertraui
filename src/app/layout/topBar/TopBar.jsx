@@ -1,57 +1,58 @@
-import Message from "../../shared/icons/Message";
-import Bell from "../../shared/icons/Bell";
-import Humburger from "../../shared/icons/Humburger";
-import SearchModal from "../../shared/components/SearchModal";
+import {SearchField} from "../../shared/components/SearchField";
+import {
+    Bars3Icon,
+    BellIcon,
+    BuildingStorefrontIcon, ChartBarIcon,
+    ChatBubbleLeftRightIcon, CpuChipIcon,
+    HomeIcon, Squares2X2Icon, UserCircleIcon,
+} from "@heroicons/react/20/solid";
+import {NavLink} from "react-router-dom";
 
-function NavLink(props) {
-    return(
-            <li className="text-gray-500  ">
-                {props.children}
-            </li>
-    )
-}
-function NavItem(props) {
+function MainNav({link, Icon}) {
     return (
-        <ul className= "flex flex-row space-x-5 p-3 ">
-            {props.children}
-        </ul>
+        <NavLink to={link}
+                 className={({isActive, isPending}) =>
+                     isActive ? " hidden w-28 lg:flex justify-center items-center group border-b-4 border-b-blue-600 transition-all ease-in-out duration-300 "
+                         : " hidden w-28 lg:flex justify-center items-center group border-b-transparent border-b-4  transition-all ease-in-out duration-300 "
+                 }
+        >
+            {({isActive , isPending})=> Icon && <Icon className={isActive ? "h-8 w-8 text-blue-600" : "h-8 w-8 text-gray-300" } /> }
+        </NavLink>
     )
 }
 
-export function NavIconContainer (props){
-    return (<div className=" bg-gray-100 hover:bg-gray-200 h-12 w-12 m-auto p-3 rounded-full  ease-in-out duration-200">
-        {props.children}
-    </div>)
-}
-
-
-function NavBrand() {
-    return(
-        <div className="flex p-3 justify-between gap-5 absolute top-0 left-0 text-stone-500 hover:text-stone-900 ease-in-out duration-200">
-            <div className="p-1">
-               <h1 className="text-2xl text-blue-400" >F</h1>
-            </div>
-            <div>
-                <SearchModal />
-            </div>
+function RightNav({Icon}) {
+    return (
+        <div>
+            {Icon && <Icon
+                className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300"/>}
         </div>
     )
 }
+
+
 export default function Navbar() {
     return (
-        <div className= "bg-white border-b-2 border-b-gray-400 pr-3 pl-3  flex justify-end relative">
-            <NavBrand />
-            <NavItem >
-                <NavLink>
-                        <Message  />
-                </NavLink>
-                <NavLink>
-                        <Bell />
-                </NavLink>
-                <NavLink >
-                        <Humburger />
-                </NavLink>
-            </NavItem>
+        <div className="bg-white border-b-2 shadow pr-3 pl-3 flex justify-between">
+            <div className="p-2 nav-left flex justify-evenly items-center gap-2">
+                <CpuChipIcon className="h-6 w-6 text-green-300"/>
+                <SearchField placeholder="Search"/>
+            </div>
+
+            <div className="nav-center flex justify-evenly gap-10 ">
+                <MainNav link="home" Icon={HomeIcon}/>
+                <MainNav link="reel" Icon={ChartBarIcon}/>
+                <MainNav link="marketplace" Icon={BuildingStorefrontIcon}/>
+                <MainNav link="profile" Icon={UserCircleIcon}/>
+            </div>
+
+
+            <div className="nav-right flex justify-evenly items-center gap-4">
+                <RightNav Icon={Squares2X2Icon}/>
+                <RightNav Icon={ChatBubbleLeftRightIcon}/>
+                <RightNav Icon={BellIcon}/>
+                <RightNav Icon={Bars3Icon}/>
+            </div>
         </div>
     )
 }
