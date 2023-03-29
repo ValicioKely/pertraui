@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .dark-theme{
+
+    }
+
+    .light-theme{
+        @apply
+    }
+}

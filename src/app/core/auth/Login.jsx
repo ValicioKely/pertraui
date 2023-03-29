@@ -1,12 +1,13 @@
 import {AtSymbolIcon, CpuChipIcon, KeyIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
-import {NavLink} from "react-router-dom";
 import {useCallback} from "react";
 import {AuthButton} from "./AuthButton";
+import {gql, useApolloClient} from "@apollo/client";
 
 
 export function Login() {
     const {register, handleSubmit} = useForm();
+
 
 
     const Input = ({Icon, label, type}) => {
@@ -19,7 +20,19 @@ export function Login() {
         );
     };
 
+
+    const client =  useApolloClient();
     const onSubmit = useCallback((data) => {
+
+        const mutation = gql`
+            
+            
+        `;
+        client.mutate({mutation}).then(
+            response => {
+                console.log(response.data)
+            }
+        )
         console.log(data)
     }, []);
 

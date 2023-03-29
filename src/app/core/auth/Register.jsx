@@ -1,6 +1,5 @@
 import {AtSymbolIcon, CpuChipIcon, KeyIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
-import {NavLink} from "react-router-dom";
 import {useCallback} from "react";
 import {AuthButton} from "./AuthButton";
 

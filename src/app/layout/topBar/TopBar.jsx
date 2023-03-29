@@ -1,12 +1,14 @@
 import {SearchField} from "../../shared/components/SearchField";
 import {
-    Bars3Icon,
-    BellIcon,
     BuildingStorefrontIcon, ChartBarIcon,
-    ChatBubbleLeftRightIcon, CpuChipIcon,
-    HomeIcon, Squares2X2Icon, UserCircleIcon,
+     CpuChipIcon,
+    HomeIcon, UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import {NavLink} from "react-router-dom";
+import {NotificationComponent} from "../../shared/components/Notification";
+import {MenuComponent} from "../../shared/components/Menu";
+import {ChatComponent} from "../../shared/components/Chat";
+import {SettingComponent} from "../../shared/components/Setting";
 
 function MainNav({link, Icon}) {
     return (
@@ -24,8 +26,7 @@ function MainNav({link, Icon}) {
 function RightNav({Icon}) {
     return (
         <div>
-            {Icon && <Icon
-                className="bg-gray-200 rounded-full p-2 h-10 w-10 text-gray-500 hover:bg-gray-400 transition-all ease-in-out duration-300"/>}
+            {Icon}
         </div>
     )
 }
@@ -33,9 +34,9 @@ function RightNav({Icon}) {
 
 export default function Navbar() {
     return (
-        <div className="bg-white border-b-2 shadow pr-3 pl-3 flex justify-between">
+        <div className="bg-white dark:bg-slate-800 border-b-2 shadow dark:shadow-gray-300 pr-3 pl-3 flex justify-between">
             <div className="p-2 nav-left flex justify-evenly items-center gap-2">
-                <CpuChipIcon className="h-6 w-6 text-green-300"/>
+                <CpuChipIcon className="h-8 w-8 text-green-300"/>
                 <SearchField placeholder="Search"/>
             </div>
 
@@ -48,10 +49,10 @@ export default function Navbar() {
 
 
             <div className="nav-right flex justify-evenly items-center gap-4">
-                <RightNav Icon={Squares2X2Icon}/>
-                <RightNav Icon={ChatBubbleLeftRightIcon}/>
-                <RightNav Icon={BellIcon}/>
-                <RightNav Icon={Bars3Icon}/>
+                <RightNav Icon={<MenuComponent />}/>
+                <RightNav Icon={<NotificationComponent />}/>
+                <RightNav Icon={<ChatComponent />}/>
+                <RightNav Icon={<SettingComponent />}/>
             </div>
         </div>
     )
