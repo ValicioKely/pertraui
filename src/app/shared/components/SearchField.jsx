@@ -11,7 +11,7 @@ export function SearchField(props) {
     } , []);
 
     return (
-        <form className="flex justify-evenly bg-gray-100  p-2 rounded-full" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex justify-evenly bg-gray-100  p-2 rounded-full ring-2 ring-offset-2 ring-green-400" onSubmit={handleSubmit(onSubmit)}>
             <button type="submit" className="outline-0">
                 <MagnifyingGlassIcon className="h-6 w-6 text-gray-500"/>
             </button>
@@ -19,4 +19,6 @@ export function SearchField(props) {
         </form>
     )
 }
+
+
 

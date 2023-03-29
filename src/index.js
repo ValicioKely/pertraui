@@ -13,11 +13,26 @@ import {Reel} from "./app/views/Reel";
 import {Friends} from "./app/views/Friends";
 import {NotFound} from "./app/views/NotFound";
 import {Profile} from "./app/views/Profile";
+import {GraphQLWsLink} from "@apollo/client/link/subscriptions";
+import {createClient} from "graphql-ws";
+import {RestLink} from "apollo-link-rest";
 
+
+const wsLink = new GraphQLWsLink(createClient({
+        url: 'https://api.apilayer.com/currency_data/live?source=EUR&currencies=USD',
+    }
+))
+
+const restLink = new RestLink(
+    {
+        uri: "https://reqres.in/" ,
+        credentials: "same-origin"
+        });
 
 const client = new ApolloClient({
-    uri: "https://apps.twinesocial.com/api/v1/content?campaign=louboutin",
-    cache: new InMemoryCache()
+    link : restLink,
+    cache: new InMemoryCache(),
+    credentials: 'include'
 })
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter(
@@ -28,7 +43,7 @@ const router = createBrowserRouter(
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="reel" element={<Reel/>}/>
                 <Route path="marketplace" element={<Marketplace/>}/>
-                <Route path="videos" element={<Videos/>}/>
+                <Route path="/home/videos" element={<Videos/>}/>
                 <Route path="friends" element={<Friends/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Route>
@@ -39,8 +54,4 @@ root.render(
         <RouterProvider router={router}/>
     </ApolloProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
