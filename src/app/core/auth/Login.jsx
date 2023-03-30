@@ -24,10 +24,9 @@ export function Login() {
     const client =  useApolloClient();
     const onSubmit = useCallback((data) => {
 
-        const mutation = gql`
-            
-            
-        `;
+        const mutation = gql(
+            ``
+        );
         client.mutate({mutation}).then(
             response => {
                 console.log(response.data)
