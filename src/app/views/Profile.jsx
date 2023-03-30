@@ -2,6 +2,7 @@ import {ProfileCard} from "../shared/components/ProfileCard";
 import Report from "../shared/components/Report";
 import PageHeader from "../shared/components/PageHeader";
 import {Tab} from "@headlessui/react";
+import VerificationForm from "../shared/components/VerificationForm";
 
 export function Profile() {
     return (
@@ -32,7 +33,7 @@ export function Profile() {
                                 </div>
                             </Tab.Panel>
                             <Tab.Panel >Performance  </Tab.Panel>
-                            <Tab.Panel >Verification</Tab.Panel>
+                            <Tab.Panel ><VerificationForm/></Tab.Panel>
                         </Tab.Panels>
                     </Tab.Group>
                 </div>
