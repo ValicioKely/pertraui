@@ -39,11 +39,9 @@ const router = createBrowserRouter(
     createRoutesFromElements(
             <Route path="/" element={<App/>}>
                 <Route path="home" element={<Home/>} />
-                <Route path="group" element={<Group/>}/>
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="reel" element={<Reel/>}/>
                 <Route path="marketplace" element={<Marketplace/>}/>
-                <Route path="/home/videos" element={<Videos/>}/>
                 <Route path="friends" element={<Friends/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Route>

@@ -25,7 +25,7 @@ function Card({title}) {
 
 export function FlipCard (){
     return (
-        <div className="flex items-center py-40">
+        <div className="flex items-center">
            <Card title="Basic"  />
            <Card title="Premium"  />
            <Card title="Gold"  />

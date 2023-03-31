@@ -24,7 +24,7 @@ export function Register() {
 
 
     return (
-            <div>
+            <div className="bg-transparent ">
                 <div>
                     <h1 className="px-auto"><CpuChipIcon className="h-16 w-16 text-green-400 "/></h1>
                     <h1 className="text-center text-2xl text-gray-500">Welcome to Pertra!</h1>
