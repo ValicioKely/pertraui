@@ -12,9 +12,9 @@ function SidenavRow({title , Icon ,color}) {
     const className =  "h-6 w-6 " + color;
     const link = title.toLowerCase();
     return (
-        <NavLink to={link} className="flex justify-start items-center gap-5  p-3 hover:bg-gray-300 rounded-xl">
+        <NavLink to={link} className="flex justify-start items-center gap-5  p-3 hover:bg-gray-300 dark:hover:bg-slate-500 rounded-xl">
             {Icon && <Icon className={className} />}
-            <p className="text-xl">{title}</p>
+            <p className="text-xl dark:text-gray-50">{title}</p>
         </NavLink>
     )
 }

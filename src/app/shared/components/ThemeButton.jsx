@@ -1,21 +1,22 @@
-import {useEffect, useState} from 'react'
 import { Switch } from '@headlessui/react'
+import {useEffect, useState} from "react";
+import {themeState} from "../../core/store";
+import {useRecoilValue} from "recoil";
 
 export function ThemeButton() {
     const [enabled, setEnabled] = useState(false);
-
+    const theme  = useRecoilValue(themeState)
 
     useEffect(
-        () => {
-            if (enabled){
-               document.documentElement.classList.add("dark");
+        () =>{
+            if (enabled) {
+                document.documentElement.classList.add(theme)
+
             }else {
-                document.documentElement.classList.remove("dark");
+                document.documentElement.classList.remove(theme)
             }
-        }
-        , [enabled]);
-
-
+        }, [enabled , theme]
+    )
 
     return (
         <Switch

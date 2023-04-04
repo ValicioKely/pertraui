@@ -34,10 +34,12 @@ function RightNav({Icon}) {
 
 export default function Navbar() {
     return (
-        <div className="bg-white dark:bg-slate-800 border-b-2 shadow dark:shadow-gray-300 pr-3 pl-3 flex justify-between">
+        <div className="bg-white dark:bg-slate-700 border-b-2 shadow dark:shadow-gray-300 pr-3 pl-3 flex justify-between">
             <div className="p-2 nav-left flex justify-evenly items-center gap-2">
                 <CpuChipIcon className="h-8 w-8 text-green-300"/>
-                <SearchField placeholder="Search"/>
+                <div className="hidden md:block">
+                    <SearchField placeholder="Search"/>
+                </div>
             </div>
 
             <div className="nav-center flex justify-evenly gap-10 ">
