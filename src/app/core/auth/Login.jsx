@@ -1,12 +1,15 @@
 import {AtSymbolIcon, CpuChipIcon, KeyIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
-import {useCallback} from "react";
 import {AuthButton} from "./AuthButton";
-import {gql, useApolloClient} from "@apollo/client";
+import { useMutation} from "@apollo/client";
+import {useEffect} from "react";
+import {LOGIN} from "../query";
+import {Navigate} from "react-router-dom";
 
 
 export function Login() {
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit ,reset} = useForm();
+    var isSubmitSuccessful = false ;
 
 
 
@@ -21,31 +24,49 @@ export function Login() {
     };
 
 
-    const client =  useApolloClient();
-    const onSubmit = useCallback((data) => {
+    const [login , {data ,loading ,error}] = useMutation(LOGIN);
 
-        const mutation = gql(
-            ``
-        );
-        client.mutate({mutation}).then(
-            response => {
-                console.log(response.data)
-            }
-        )
-        console.log(data)
-    }, []);
+    const onSubmit = (userdata) => {
+        login({variables : {
+                email : userdata.email,
+                password : userdata.password
+            }})
+            .then(
+                () =>{
+                 if (loading) {
+                     return <p >Loading...</p>
+                 }
+                 if (error){
+                     console.log("there is an error " ,error)
+                 }
+                 if (data){}
+                    console.log("there is the data " ,data)
+                    isSubmitSuccessful =true;
+                }
+            )
+    }
+
+    useEffect(() => {
+        if (isSubmitSuccessful){
+            reset({
+                email: '',
+                password: ''
+            })
+        }
+    }, [isSubmitSuccessful ,reset])
+
 
 
     return (
-
             <div className="bg-transparent">
+                {isSubmitSuccessful && (<Navigate to="/home"   replace={true} />)}
                 <div>
                     <h1 className="px-auto"><CpuChipIcon className="h-16 w-16 text-green-400 "/></h1>
-                    <h1 className="text-center text-2xl text-gray-500">Welcome back to Pertra!</h1>
+                    <h1 className="text-center text-2xl text-gray-500 dark:text-gray-50">Welcome back to Pertra!</h1>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input label="Email" Icon={AtSymbolIcon} type="text"/>
-                    <Input label="Password" Icon={KeyIcon} type="password"/>
+                    <Input label="email" Icon={AtSymbolIcon} type="text"/>
+                    <Input label="password" Icon={KeyIcon} type="password"/>
                     <p className="text-end">
                         <AuthButton value="Login" />
                     </p>

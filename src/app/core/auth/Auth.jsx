@@ -10,14 +10,14 @@
             setMember(isMember => isMember = !isMember) ;
         } , [])
         return (
-            <div className="shadow-xl flex justify-center w-fit h-full rounded-xl py-10 px-10 backdrop-blur-2xl backdrop-opacity-10 bg-gradient-to-tl from-slate-300 to-white ">
+            <div className="bg-gray-50 dark:bg-slate-700 shadow-xl flex justify-center w-fit h-full rounded-xl py-10 px-10 backdrop-blur-2xl backdrop-opacity-10 ">
                 <div>
                     {isMember ? <Login /> : <Register />}
-                    <p className="text-center text-gray-500">
+                    <p className="text-center text-gray-500 dark:text-gray-50">
                         <button  onClick={handleAuth} >{isMember ? "Do not have an account yet ?" : "Already member?"}</button>
                     </p>
                     <NavLink to="/help">
-                        <p className="text-center text-gray-500">Need help?</p>
+                        <p className="text-center text-gray-500 dark:text-gray-50">Need help?</p>
                     </NavLink>
                 </div>
             </div>

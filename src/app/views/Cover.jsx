@@ -42,6 +42,7 @@
                     </div>
                 </span>
                 <span>
+                    <img src="/src/assets/security.png" alt="Security" />
                 </span>
             </div>
         )
@@ -49,9 +50,9 @@
 
     function RiskProfile () {
         return (
-            <div className="mt-[100px] mx-[150px] h-screen">
+            <div className="mt-[100px]  h-screen w-screen bg-gray-50 ">
                 <p className="text-blue-600 font-semibold  text-xl py-9">RISK PROFILE </p>
-                <div className="flex justify-evenly py-20">
+                <div className="lg:flex justify-evenly py-20 block">
                     <span className="m-2 w-fit">
                         <h1 className="text-black text-7xl font-light ">
                             Profitable Yield
@@ -60,7 +61,7 @@
                             <br/>risk profiles
                         </h1>
                     </span>
-                    <spapn className="py-20" >
+                    <span className="py-20" >
                         <p className="py-2">
                             We integrate with multiple Blockchain and
                             <br/>DeFi protocol and design back tested and
@@ -74,39 +75,43 @@
                             <br/>fits your risk/reward profile with a One-click
                             <br/>investment
                         </p>
-                    </spapn>
+                    </span>
                 </div>
-                <div className="flex justify-center">
+                <div className="md:flex justify-center none ">
                     <FlipCard />
                 </div>
             </div>
         )
     }
 
+    function LandingPageFooter(){
+        return (
+            <div className="bg-gray-50 text-gray-50 h-screen ">
+                <span className="translate-y-1/4 ">
+                    Social
+                </span>
+            </div>
+        )
+    }
 
     export default function Cover() {
 
         return (
             <div>
-                <div className="z-1">
+                <div className="z-1 overflow-x-hidden">
                     <LandingPageHeader/>
                     <CoverContent />
                     <RiskProfile />
+                    <LandingPageFooter />
+                    <div
+                        className="bg-gradient-to-bl from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-96 h-40   blur-3xl absolute top-0 right-0 -z-1">
 
+                    </div>
+                    <div
+                        className="bg-gradient-to-r from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-20 h-96   blur-3xl absolute bottom-4 left-0 -z-1">
 
-
-
+                    </div>
                 </div>
-                <div
-                    className="bg-gradient-to-bl from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-96 h-40   blur-3xl absolute top-0 right-0 -z-1">
-
-                </div>
-                <div
-                    className="bg-gradient-to-r from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-20 h-96   blur-3xl absolute bottom-4 left-0 -z-1">
-
-                </div>
-
-
             </div>
         )
     }
