@@ -24,24 +24,17 @@ export function Login() {
     };
 
 
-    const [login , {data ,loading ,error}] = useMutation(LOGIN);
+    const [login ] = useMutation(LOGIN);
 
-    const onSubmit = (userdata) => {
-        login({variables : {
+    const onSubmit = async (userdata) => {
+
+       await login({variables : {
                 email : userdata.email,
                 password : userdata.password
             }})
             .then(
-                () =>{
-                 if (loading) {
-                     return <p >Loading...</p>
-                 }
-                 if (error){
-                     console.log("there is an error " ,error)
-                 }
-                 if (data){}
-                    console.log("there is the data " ,data)
-                    isSubmitSuccessful =true;
+                (res) =>{
+                    console.log(res.data.errors)
                 }
             )
     }
