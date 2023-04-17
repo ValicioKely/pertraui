@@ -7,7 +7,6 @@ import {
 import {NavLink} from "react-router-dom";
 import {NotificationComponent} from "../../shared/components/Notification";
 import {MenuComponent} from "../../shared/components/Menu";
-import {ChatComponent} from "../../shared/components/Chat";
 import {SettingComponent} from "../../shared/components/Setting";
 
 function MainNav({link, Icon}) {
@@ -53,7 +52,6 @@ export default function Navbar() {
             <div className="nav-right flex justify-evenly items-center gap-4">
                 <RightNav Icon={<MenuComponent />}/>
                 <RightNav Icon={<NotificationComponent />}/>
-                <RightNav Icon={<ChatComponent />}/>
                 <RightNav Icon={<SettingComponent />}/>
             </div>
         </div>
