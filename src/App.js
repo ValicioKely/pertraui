@@ -10,7 +10,7 @@ export default function App (){
 
                 return (
                     <RecoilRoot >
-                        <div className= "bg-gray-100 dark:bg-slate-900 h-screen ">
+                        <div className= "bg-gray-100 dark:bg-slate-900 h-screen">
                             <Navbar />
                             <Outlet />
                             {/*<Cover />*/}

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+    :root {
+        --primary-color : rgb(134 239 172);
+    }
     .dark-theme{
 
     }

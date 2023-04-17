@@ -11,7 +11,7 @@ export function ProfileCard() {
 
     return (
         <div>
-           <div className="shadow-xl w-fit rounded-xl p-4 ring-2 ring-offset-4 ring-green-400" >
+           <div className="shadow-xl w-fit m-8 rounded-xl p-4 ring-2 ring-offset-4 ring-green-400" >
                <form onSubmit={handleSubmit(onSubmit)}>
                    <div >
                        <label htmlFor="avatar"  >
