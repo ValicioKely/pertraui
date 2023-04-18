@@ -38,7 +38,7 @@ export function Reel() {
                     {
                         pairs.map( onePair => {
                             return (
-                                <Pair pair={onePair.pair} ratio={onePair.ratio}/>
+                                <Pair key={onePair.pair}  pair={onePair.pair} ratio={onePair.ratio}/>
                             )
                         }
                         )

@@ -1,4 +1,4 @@
-import React, {PureComponent, useState} from 'react';
+import React, {useState} from 'react';
 import {AreaChart, Area, ResponsiveContainer} from 'recharts';
 import {StarIcon} from "@heroicons/react/24/outline";
 
