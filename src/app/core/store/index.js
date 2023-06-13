@@ -7,6 +7,11 @@ export const username = atom({
     default : []
 })
 
+export const userid = atom({
+    key : "userid" ,
+    default : []
+})
+
 
 export const themeState= atom({
     key : "theme" ,

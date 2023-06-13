@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css"
 import {RecoilRoot} from "recoil";
-// import Cover from "./app/views/Cover";
+import Cover from "./app/views/Cover";
 import Navbar from "./app/layout/topBar/TopBar";
 import {Outlet} from "react-router-dom";
 import env from "react-dotenv";
