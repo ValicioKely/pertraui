@@ -11,7 +11,6 @@ export function ThemeButton() {
         () =>{
             if (enabled) {
                 document.documentElement.classList.add(theme)
-
             }else {
                 document.documentElement.classList.remove(theme)
             }
