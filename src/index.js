@@ -11,7 +11,7 @@ import {Profile} from "./app/views/Profile";
 import Dashboard from "./app/views/Dashboard";
 import {Home} from "./app/views/Home";
 import {RecoilRoot} from "recoil";
-
+import {USERSLOADER} from "./app/core/loader";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,9 +24,7 @@ const router = createBrowserRouter(
         },
         {
             path : "dashboard",
-            loader: async () => {
-                return 'valiciokely';
-            },
+            loader: USERSLOADER,
             element : <Dashboard />,
             children: [{
                 path: "home",

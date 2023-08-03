@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import type {UserInterface} from "../interface";
 
 
 export async function LOGIN(userdata) {
@@ -12,10 +12,16 @@ export async function LOGIN(userdata) {
     )
 }
 
-export async function USERSLOADER() {
-    return await axios.get(
+export async function USERSLOADER(): Promise<UserInterface> {
+    const results = await axios.get(
         `${process.env.REACT_APP_API_URL}api/user/`
     )
+
+    if (!results) throw new Error('something went wrong!')
+
+    const users = await results.json();
+
+    return {users} ;
 }
 
 export async function USERINFOLOADERS(userId) {
