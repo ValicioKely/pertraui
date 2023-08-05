@@ -2,8 +2,8 @@ import {ProfileCard} from "../shared/components/ProfileCard";
 import Report from "../shared/components/Report";
 import PageHeader from "../shared/components/PageHeader";
 import {Tab} from "@headlessui/react";
-import VerificationForm from "../shared/components/VerificationForm";
 import Performance from "../shared/components/Performance";
+import Account from "../shared/components/Account";
 
 export function Profile() {
     return (
@@ -16,7 +16,7 @@ export function Profile() {
                         <Tab.List className ="flex justify-evenly p-5 text-gray-400" >
                             <Tab >Profile</Tab>
                             <Tab >Performance</Tab>
-                            <Tab>Verification</Tab>
+                            <Tab>Account</Tab>
                         </Tab.List>
                         <Tab.Panels>
                             <Tab.Panel >
@@ -32,7 +32,7 @@ export function Profile() {
                             <Tab.Panel > <Performance />  </Tab.Panel>
                             <Tab.Panel >
                                 <div className="min-h-screen">
-                                    <VerificationForm/>
+                                    <Account/>
                                 </div>
                             </Tab.Panel>
                         </Tab.Panels>

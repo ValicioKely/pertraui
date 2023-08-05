@@ -105,11 +105,9 @@
                     <LandingPageFooter />
                     <div
                         className="bg-gradient-to-bl from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-96 h-40   blur-3xl absolute top-0 right-0 -z-1">
-
                     </div>
                     <div
                         className="bg-gradient-to-r from-indigo-500 from-40% via-sky-500 via-30% to-emerald-500 to-60%  w-20 h-96   blur-3xl absolute bottom-4 left-0 -z-1">
-
                     </div>
                 </div>
             </div>

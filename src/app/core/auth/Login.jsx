@@ -1,15 +1,16 @@
 import {AtSymbolIcon, CpuChipIcon, KeyIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
 import {AuthButton} from "./AuthButton";
-import { useMutation} from "@apollo/client";
-import {useEffect} from "react";
-import {LOGIN} from "../query";
-import {Navigate} from "react-router-dom";
+import {useRecoilState} from "recoil";
+import {userid} from "../store";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 export function Login() {
-    const {register, handleSubmit ,reset} = useForm();
-    var isSubmitSuccessful = false ;
+    const {register, handleSubmit } = useForm();
+    let [userId, setUseId] =  useRecoilState(userid);
+    const navigate = useNavigate();
 
 
 
@@ -24,35 +25,27 @@ export function Login() {
     };
 
 
-    const [login ] = useMutation(LOGIN);
 
     const onSubmit = async (userdata) => {
-
-       await login({variables : {
-                email : userdata.email,
-                password : userdata.password
-            }})
+        await axios.post(
+            `${process.env.REACT_APP_API_URL}api/user/login`,
+            {
+                email:userdata.email,
+                password:userdata.password
+            }
+        )
             .then(
-                (res) =>{
-                    console.log(res.data.errors)
+                function (response) {
+                    setUseId(response.data.user);
+                    navigate("/dashboard/home");
+                    return userId;
                 }
             )
-    }
-
-    useEffect(() => {
-        if (isSubmitSuccessful){
-            reset({
-                email: '',
-                password: ''
-            })
         }
-    }, [isSubmitSuccessful ,reset])
-
 
 
     return (
             <div className="bg-transparent">
-                {isSubmitSuccessful && (<Navigate to="/home"   replace={true} />)}
                 <div>
                     <h1 className="px-auto"><CpuChipIcon className="h-16 w-16 text-green-400 "/></h1>
                     <h1 className="text-center text-2xl text-gray-500 dark:text-gray-50">Welcome back to Pertra!</h1>

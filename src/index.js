@@ -3,49 +3,58 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {ApolloClient, InMemoryCache, ApolloProvider} from "@apollo/client";
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import {Home} from "./app/views/Home";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Marketplace} from "./app/views/Marketplace";
 import {Reel} from "./app/views/Reel";
-import {Friends} from "./app/views/Friends";
 import {NotFound} from "./app/views/NotFound";
 import {Profile} from "./app/views/Profile";
-import {GraphQLWsLink} from "@apollo/client/link/subscriptions";
-import {createClient} from "graphql-ws";
-import {RestLink} from "apollo-link-rest";
+import Dashboard from "./app/views/Dashboard";
+import {Home} from "./app/views/Home";
+import {RecoilRoot} from "recoil";
+import {USERSLOADER} from "./app/core/loader";
 
-
-
-const wsLink = new GraphQLWsLink(createClient({
-        url: 'https://api.apilayer.com/currency_data/live?source=EUR&currencies=USD',
-    }
-))
-
-const restLink = new RestLink(
-    {
-        uri: "http://localhost:5000/" });
-
-const client = new ApolloClient({
-    link: restLink,
-    cache : new InMemoryCache()
-})
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+//routes
+
 const router = createBrowserRouter(
-    createRoutesFromElements(
-            <Route path="/" element={<App/>}>
-                <Route path="home" element={<Home/>} />
-                <Route path="profile" element={<Profile/>}/>
-                <Route path="reel" element={<Reel/>}/>
-                <Route path="marketplace" element={<Marketplace/>}/>
-                <Route path="friends" element={<Friends/>}/>
-                <Route path="*" element={<NotFound/>}/>
-            </Route>
-    )
-);
+    [{
+        path: "/",
+        element: <App />
+        },
+        {
+            path : "dashboard",
+            loader: USERSLOADER,
+            element : <Dashboard />,
+            children: [{
+                path: "home",
+                element: <Home/>
+            },
+                {
+                    path: "reel",
+                    element: <Reel/>
+                },
+                {
+                    path: "marketplace",
+                    element: <Marketplace/>
+                },
+                {
+                    path: "profile",
+                    element: <Profile />
+                }]
+        },
+        {
+            path: '*' ,
+            element: <NotFound />
+        }
+    ]
+)
+
+
 root.render(
-    <ApolloProvider client={client}>
+
+    <RecoilRoot>
         <RouterProvider router={router}/>
-    </ApolloProvider>
+    </RecoilRoot>
 );
 reportWebVitals();
