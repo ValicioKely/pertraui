@@ -9,6 +9,7 @@ import axios from "axios";
 
 export function Login() {
     const {register, handleSubmit } = useForm();
+    // eslint-disable-next-line
     let [userId, setUseId] =  useRecoilState(userid);
     const navigate = useNavigate();
 
@@ -37,8 +38,7 @@ export function Login() {
             .then(
                 function (response) {
                     setUseId(response.data.user);
-                    navigate("/dashboard/home");
-                    return userId;
+                    navigate('profile');
                 }
             )
         }

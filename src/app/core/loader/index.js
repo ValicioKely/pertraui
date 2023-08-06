@@ -1,5 +1,6 @@
 import axios from "axios";
-import type {UserInterface} from "../interface";
+import {redirect} from "react-router-dom";
+
 
 
 export async function LOGIN(userdata) {
@@ -12,25 +13,30 @@ export async function LOGIN(userdata) {
     )
 }
 
-export async function USERSLOADER(): Promise<UserInterface> {
-    const results = await axios.get(
+export async function loadUser() {
+    return await axios.get(
         `${process.env.REACT_APP_API_URL}api/user/`
     )
-
-    if (!results) throw new Error('something went wrong!')
-
-    const users = await results.json();
-
-    return {users} ;
+        .then(
+            (response) => {
+                if (!response.data) {
+                    return redirect("/")
+                }else{
+                    return response.data.users
+                }
+            }
+        );
 }
 
-export async function USERINFOLOADERS(userId) {
+export async function loadUserInfo(userId) {
+
     return await axios.get(
-        `${process.env.REACT_APP_API_URL}api/user/`,
-        {
-            params: userId
-        }
+        `${process.env.REACT_APP_API_URL}api/user/${userId}`
     )
+        .then((response) => {
+            if (!response.data) return redirect("/")
+            return response.data.user
+        })
 }
 
 export async function ACCOUNTSLOADER() {
