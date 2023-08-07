@@ -1,10 +1,12 @@
 import {CameraIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
 import {AuthButton} from "../../core/auth/AuthButton";
+import {useRecoilValue} from "recoil";
+import {currentUserNameState} from "../../core/store";
 
 export function ProfileCard() {
+    let currentUserName = useRecoilValue(currentUserNameState);
     const {register , handleSubmit} = useForm();
-
     const onSubmit = (data) => {
         console.log(data)
     }
@@ -20,6 +22,9 @@ export function ProfileCard() {
                            </div>
                        </label>
                        <input name="avatar" {...register("avatar")} id="avatar" type="file" className="hidden"/>
+                   </div>
+                   <div>
+                       <h2 className="text-xl text-blue-600">{currentUserName.username}</h2>
                    </div>
                    <div className="bg-gray-200 rounded-xl p-2 my-3">
                        <input type="text" {...register("bio")} placeholder="Add bio" className="outline-0 bg-transparent mx-6" />

@@ -2,11 +2,11 @@ import {ArrowDownIcon} from "@heroicons/react/20/solid";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useRecoilState} from "recoil";
-import {userid} from "../../core/store";
+import {currentUserIdState} from "../../core/store";
 
 
 export function LogoutButton ()  {
-    let [userId, setUserId] =  useRecoilState(userid);
+    let [userId, setUserId] =  useRecoilState(currentUserIdState);
     const navigate = useNavigate();
     const handleLogout = async () => {
       await axios.get(

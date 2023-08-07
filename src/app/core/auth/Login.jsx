@@ -2,7 +2,7 @@ import {AtSymbolIcon, CpuChipIcon, KeyIcon} from "@heroicons/react/20/solid";
 import {useForm} from "react-hook-form";
 import {AuthButton} from "./AuthButton";
 import {useRecoilState} from "recoil";
-import {userid} from "../store";
+import {currentUserIdState} from "../store";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ import axios from "axios";
 export function Login() {
     const {register, handleSubmit } = useForm();
     // eslint-disable-next-line
-    let [userId, setUseId] =  useRecoilState(userid);
+    let [userId, setUseId] =  useRecoilState(currentUserIdState);
     const navigate = useNavigate();
 
 

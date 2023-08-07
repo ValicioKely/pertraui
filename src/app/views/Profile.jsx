@@ -5,6 +5,8 @@ import {Tab} from "@headlessui/react";
 import Performance from "../shared/components/Performance";
 import Account from "../shared/components/Account";
 
+
+
 export function Profile() {
     return (
         <div className="bg-gray-100 dark:bg-slate-900">
@@ -22,7 +24,7 @@ export function Profile() {
                             <Tab.Panel >
                                 <div className="grid lg:grid-cols-2 place-content-center  px-20 h-auto">
                                     <div>
-                                        <ProfileCard/>
+                                        <ProfileCard />
                                     </div>
                                     <div>
                                         <Report />

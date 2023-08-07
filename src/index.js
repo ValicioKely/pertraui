@@ -11,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <RecoilRoot>
-        <App/>
+        <React.Suspense fallback={<div>Loading</div>} >
+            <App/>
+        </React.Suspense>
     </RecoilRoot>
 );
 reportWebVitals();

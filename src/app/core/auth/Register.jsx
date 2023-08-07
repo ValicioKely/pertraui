@@ -4,12 +4,12 @@ import {AuthButton} from "./AuthButton";
 import axios from "axios";
 import {useRecoilState} from "recoil";
 import {useNavigate} from "react-router-dom";
-import {userid} from "../store";
+import {currentUserIdState} from "../store";
 
 
 export function Register() {
     const {register, handleSubmit} = useForm();
-    const [userId , setUserId] = useRecoilState(userid);
+    const [userId , setUserId] = useRecoilState(currentUserIdState);
     const navigate = useNavigate();
 
     const Input = ({Icon, label, type}) => {
