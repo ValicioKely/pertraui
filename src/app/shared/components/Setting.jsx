@@ -3,7 +3,7 @@ import {useCallback, useState} from "react";
 import {ThemeButton} from "./ThemeButton";
 import {LogoutButton} from "./LogoutButton";
 import {useRecoilValue} from "recoil";
-import {userid} from "../../core/store";
+import {currentUserIdState} from "../../core/store";
 
 
 export function SettingComponent() {
@@ -11,7 +11,7 @@ export function SettingComponent() {
     const handleClick = useCallback(() => {
         setShow(s => !s);
     }, []);
-    const userId = useRecoilValue(userid)
+    const userId = useRecoilValue(currentUserIdState)
 
 
     return (
